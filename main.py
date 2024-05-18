@@ -1,42 +1,43 @@
-x = 38
-print('дратути')
-if x < 0:
-    print('Меньше нуля') # не верное значение. строка в консоль не выходит. 38 болше нуля.
-print('дотвидания!')
- #пример
-a,b = 10,5
+def print_params(a, b, c):
+    print(a, b, c)
 
-if a > b:
-    print('a > b')# условия соответствуют True
+print_params(a = 1, b = 'строка', c = True)
 
-if a > b and a > 0: # 10 > 5 и 10 > 0 условия соответствуют True программа выводит в консоль успех
-    print('успех')
+# print_params() , вызов без аргументов.
+# ОШИБКА print_params() missing 3 required positional arguments: 'a', 'b', and 'c'
 
-if (a > b) and (a > 0 or b < 1000):# условия соответствуют True программа выводит в консоль успех
-    print('успех')
-# Можно сравнить числа, строки, списки
-if 5 < b and b < 10:
-    print('успех')
+def print_params(a, b, c):
+    print(a, b, c)
 
-if '34'> '123':
-    print('успех')
+print_params(a = 1, b = 25, c = True)
+print_params(a = 1, b = 'строка', c = [1,2,3])
 
-if '123' > '12':
-    print('успех')
+#print_params(a = 1, b = 'строка', c = [1,2,3], d=34) ОШИБКА лишний параметр
+# d=34 лишний параметр, так как в функции только 3 параметра а,в,с.
+#print_params(a = 1, b = 'строка') ОШИБКА нехватает параметра. в функции у нас 3 парамнтра а,в,с
 
-if [1, 2] > [1, 1]:
-    print('успех')
-# Что нильзя сравнивать. разные типы
-if '6' > 5:   # типы ctr и int нильзя сравнить
-    print('успех')
-if [5, 6] > 5: # тип list (список) и тип int (целое число) нильзя сравнивать
-    print('успех')
-# но
-if '6' != 5:  # 6 строка не может быть равной целому числу. поэтому верно.
-    print('успех')
+def print_params(a, b, c):
+    print(a, b, c)
 
+values_list = [34,46] # список распоковался в параметры а,в.
+values_dict = {'c': 532} # словарь распоковался в указанный параметр с.
+print_params(*values_list, **values_dict)
+def print_params(a, b, c):
+    print(a, b, c)
 
+values_dict = {'a': 532,'b':89,'c':378 } # словарь распоковался в указанный параметр.
+print_params(**values_dict)
 
+def print_params(a, b, c):
+    print(a, b, c)
 
+values_list = [34,True,'dog'] # список распоковался в параметры а,в,с. типы данных[int, bool, ctr]
 
+print_params(*values_list)
 
+def print_params(a, b, c,):
+    print(a,b,c)
+
+values_list2 = [34,True]
+print_params(*values_list2,42) # к данным распакованным добавилось недостающее значение 42,
+#заполнились все 3 параметрa.
