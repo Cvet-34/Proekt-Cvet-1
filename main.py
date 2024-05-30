@@ -1,43 +1,58 @@
-def print_params(a, b, c):
-    print(a, b, c)
+#  чтоб что то применить нужно импортировать из библиотеки
+import tkinter as tk
 
-print_params(a = 1, b = 'строка', c = True)
+def get_values():
+    num1 = int(number1_entry.get())
+    num2 = int(number2_entry.get())
+    return num1, num2
 
-# print_params() , вызов без аргументов.
-# ОШИБКА print_params() missing 3 required positional arguments: 'a', 'b', and 'c'
+def insert_value(value):
+    answer_entry. delete(0, 'end')
+    answer_entry.insert(0, value)
 
-def print_params(a, b, c):
-    print(a, b, c)
+def add():
+    num1, num2 = get_values()
+    res = num1 + num2
+    insert_value(res)
 
-print_params(a = 1, b = 25, c = True)
-print_params(a = 1, b = 'строка', c = [1,2,3])
+def sub():
+    num1, num2 = get_values()
+    res = num1 - num2
+    insert_value(res)
 
-#print_params(a = 1, b = 'строка', c = [1,2,3], d=34) ОШИБКА лишний параметр
-# d=34 лишний параметр, так как в функции только 3 параметра а,в,с.
-#print_params(a = 1, b = 'строка') ОШИБКА нехватает параметра. в функции у нас 3 парамнтра а,в,с
+def div():
+    num1, num2 = get_values()
+    res = num1 / num2
+    insert_value(res)
 
-def print_params(a, b, c):
-    print(a, b, c)
+def mul():
+    num1, num2 = get_values()
+    res = num1 * num2
+    insert_value(res)
 
-values_list = [34,46] # список распоковался в параметры а,в.
-values_dict = {'c': 532} # словарь распоковался в указанный параметр с.
-print_params(*values_list, **values_dict)
-def print_params(a, b, c):
-    print(a, b, c)
 
-values_dict = {'a': 532,'b':89,'c':378 } # словарь распоковался в указанный параметр.
-print_params(**values_dict)
-
-def print_params(a, b, c):
-    print(a, b, c)
-
-values_list = [34,True,'dog'] # список распоковался в параметры а,в,с. типы данных[int, bool, ctr]
-
-print_params(*values_list)
-
-def print_params(a, b, c,):
-    print(a,b,c)
-
-values_list2 = [34,True]
-print_params(*values_list2,42) # к данным распакованным добавилось недостающее значение 42,
-#заполнились все 3 параметрa.
+window = tk.Tk()
+window.title("Калькулятор")
+window.geometry('350x350')
+window.resizable(False, False)
+button_add = tk.Button(window, text='+', width=2, height=2, command=add)
+button_add.place(x=100, y=200)
+button_sub = tk.Button(window, text='-', width=2, height=2, command=sub)
+button_sub.place(x=150, y=200)
+button_mul = tk.Button(window, text='*', width=2, height=2, command=mul)
+button_mul.place(x=200, y=200)
+button_div = tk.Button(window, text='/', width=2, height=2, command=div)
+button_div.place(x=250, y=200)
+number1_entry = tk.Entry(window, width=28)
+number1_entry.place(x=100, y=75)
+number2_entry = tk.Entry(window, width=28)
+number2_entry.place(x=100, y=150)
+answer_entry = tk.Entry(window, width=28)
+answer_entry.place(x=100, y=280)
+number1 = tk.Label(window, text='Введите первое число ')
+number1.place(x=100, y=50)
+number2 = tk.Label(window, text='Введите второе число ')
+number2.place(x=100, y=125)
+answer = tk.Label(window, text='Ответ ')
+answer.place(x=100, y=255)
+window.mainloop()
