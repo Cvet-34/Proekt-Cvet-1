@@ -5,8 +5,8 @@ import DZsisittest
 #Систиматизация тестов
 DZsisittestST = unittest.TestSuite()
 
-DZsisittestST.addTest(unittest.TestLoader().loadTestsFromTestCase(DZsisittest.TournamentTest)) # Добавили новый блок тестов
-#которые создал другой программист
+DZsisittestST.addTest(unittest.TestLoader().loadTestsFromTestCase(DZsisittest.TournamentTest)) # Добавили блок тестов
+
 
 
 #Далее можем сконфигурировать по запуску.
