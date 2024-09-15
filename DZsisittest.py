@@ -91,7 +91,3 @@ class TournamentTest(TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
-
-def tearDownClass():
-    return None

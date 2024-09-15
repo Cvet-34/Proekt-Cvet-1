@@ -9,6 +9,6 @@ DZsisittestST.addTest(unittest.TestLoader().loadTestsFromTestCase(DZsisittest.To
 #которые создал другой программист
 
 
-#Далее можем сконфигурировать по запуску. можно сделать отдельный файл runер и в него сохр., а мы создать отдельную переменную.
+#Далее можем сконфигурировать по запуску.
 runner = unittest.TextTestRunner(verbosity=2)
 runner.run(DZsisittestST)
