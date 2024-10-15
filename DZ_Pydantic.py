@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from typing import List
 
 
+
 app = FastAPI()
 
 users = []
@@ -15,22 +16,22 @@ class User(BaseModel):
     age: int
 
 
-@app.get("/user")
-async def get_all_user() -> List[User]:
+@app.get("/users")
+async def get_users() -> List[User]:
     return users
 
 
-@app.post("/user/{username}/{age}'")
-async def create_user(username: User, age: User, user_id: User) -> str:
+@app.post("/user/{username}/{age}")
+async def create_user(username: str, age: int, user_id: int) -> str:
     username.user_id = len(users)
     users.append(username)
     users.age = len(users)
     users.append(age)
-    return f"User {user_id} is registered"
+    return f"User {user_id+1} is registered"
 
 
-@app.put("/user/{user_id}/{username}/{age}'")
-async def updata_user(user_id: int, username: str, age: int = Body()) -> str:
+@app.put("/user/{user_id}/{username}/{age}")
+async def updata_user(user_id: int, username: str, age: int) -> str:
     try:
         edit_username = users[user_id]
         edit_username.str = username, age
